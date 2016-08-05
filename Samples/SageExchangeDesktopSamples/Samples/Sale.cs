@@ -76,12 +76,12 @@ namespace SageExchangeDesktopSamples
             // instead of building the request object first and serializing. For example,
             // if all your requests are basic sales that only vary by dollar amount and 
             // the order number, it may be simpler to use a string literal + String.Format().
-
+            
             // See the "XML Messaging" document for more on SED requests.
 
             // But anyway, however you decide to generate your XML, pass it into the client object.
             // This is the point at which the UI pops up to collect the payment information.
-            ModuleResponse ApiResponse = (ModuleResponse)ApiClient.GetResponse(SedRequest.ToXml());
+            ModuleResponse ApiResponse = (ModuleResponse)ApiClient.GetResponse(XmlRequest);
 
             // All requests through the SED API return a status code and description:
             int StatusCode = ApiResponse.GetStatusCode();
