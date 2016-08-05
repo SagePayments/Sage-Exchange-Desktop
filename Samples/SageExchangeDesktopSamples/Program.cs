@@ -19,6 +19,11 @@ namespace SageExchangeDesktopSamples
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Press any key to attempt transaction.");
+            Console.ReadLine();
+
+            var sedClient = new ModuleClient();
+            
             var payment = new Request_v1.PaymentType();
 
             payment.Merchant = new Request_v1.MerchantType
@@ -57,23 +62,28 @@ namespace SageExchangeDesktopSamples
                 LanguageID = languageId
             };
 
-            Console.WriteLine("Press any key to attempt transaction.");
-            Console.ReadLine();
+            
+            ModuleResponse sedResponse = (ModuleResponse)sedClient.GetResponse(sedRequest.ToXml());
 
-            var sedClient = new ModuleClient();
-            ModuleResponse response = (ModuleResponse)sedClient.GetResponse(sedRequest.ToXml());
-
-            Console.WriteLine("Status Code: " + response.GetStatusCode().ToString());
-            Console.WriteLine("Status Desc: " + response.GetStatusDescription().ToString());
-            Console.WriteLine("Response Length: " + response.GetResponseLength());
+            Console.WriteLine("Status Code: " + sedResponse.GetStatusCode().ToString());
+            Console.WriteLine("Status Desc: " + sedResponse.GetStatusDescription().ToString());
             Console.WriteLine();
-            Console.WriteLine(response.GetResponseText());
 
+            // uncomment to print out the raw xml response
+            //Console.WriteLine("Response Length: " + sedResponse.GetResponseLength());
+            //Console.WriteLine("Response Text: " + sedResponse.GetResponseText());
+            //Console.WriteLine();
+
+            Response_v1 paymentResponse = Response_v1.FromXml(sedResponse.GetResponseText());
+            Console.WriteLine("Response Message: " + paymentResponse.PaymentResponses[0].Response.ResponseMessage);
+            Console.WriteLine("Transacion Reference: " + paymentResponse.PaymentResponses[0].TransactionResponse.VANReference);
             Console.WriteLine();
+
             Console.WriteLine("Press any key to quit.");
             Console.ReadLine();
 
             
         }
+
     }
 }
