@@ -50,9 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sale.cs" />
+    <Compile Include="Samples\Sale.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
