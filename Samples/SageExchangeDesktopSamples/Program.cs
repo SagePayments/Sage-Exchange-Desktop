@@ -21,8 +21,8 @@ namespace SageExchangeDesktopSamples
             // Each sample method is stored in a file of the same name; eg, Sale() is in Sale.cs.
 
             // Running a simple Sale transaction is a good way to get started:
-            //Samples.Transactions.Sale();
-            Samples.Transactions.AuthAndCapture();
+            Samples.Transactions.Sale();
+            //Samples.Transactions.AuthAndCapture();
 
             // -----------------------------------------------
             Console.WriteLine("Press any key to quit.");
