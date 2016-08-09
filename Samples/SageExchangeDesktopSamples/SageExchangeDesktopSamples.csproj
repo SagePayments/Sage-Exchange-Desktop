@@ -58,6 +58,7 @@
     <Compile Include="Samples\Sale.cs" />
     <Compile Include="Samples\Vault.cs" />
     <Compile Include="Samples\Void.cs" />
+    <Compile Include="RequestFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

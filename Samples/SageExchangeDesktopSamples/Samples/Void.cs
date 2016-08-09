@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SageExchangeDesktopSamples
+namespace SageExchangeDesktopSamples.Samples
 {
-    partial class Samples
+    partial class Transactions
     {
         static void Void()
         {
