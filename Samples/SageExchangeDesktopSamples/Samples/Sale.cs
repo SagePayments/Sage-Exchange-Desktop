@@ -2,9 +2,9 @@
 using clSedApi;
 using SpsXmlCL.Client;
 
-namespace SageExchangeDesktopSamples
+namespace SageExchangeDesktopSamples.Samples
 {
-    partial class Samples
+    partial class Transactions
     {
         static public void Sale()
         {
@@ -14,74 +14,36 @@ namespace SageExchangeDesktopSamples
             Console.WriteLine();
             // -----------------------------------------------
 
-            // The SED API exposes a client object that manages communication
-            // between your application and Sage Exchange Desktop itself.
-            var ApiClient = new ModuleClient();
+            // This sample demonstrates a Sale request through Sage Exchange Desktop.
+            // A Sale is the most basic type of transaction.
 
-            // The SpsXmlCL library can be used to construct request objects.
-            var PaymentRequest = new Request_v1.PaymentType();
+            // See the Utilities class for more on building requests.
+            Request_v1 SedRequest = RequestFactory.GetPaymentRequest();
 
-            // Set the merchant account for the request.
-            PaymentRequest.Merchant = new Request_v1.MerchantType
-            {
-                MerchantID = Config.merchantId,
-                MerchantKey = Config.merchantKey
-            };
-
-            // Configuring the transaction itself.
-            PaymentRequest.TransactionBase = new Request_v1.TransactionBaseType
-            {
-                TransactionType = "11", // 11 is a Sale -- see the complete documentation for a complete list.
-                TransactionID = Config.transactionId = Guid.NewGuid().ToString(), // you can use this value to poll for the transaction status
-                Reference1 = "Invoice " + (new Random()).Next(0, 100).ToString(), // an order number... a random invoice number works for this demo
-                Amount = Config.paymentAmount // the payment amount
-            };
-
-            // Adding the customer's name and billing address.
-            PaymentRequest.Customer = new Request_v1.PersonType
-            {
-                Name = new Request_v1.NameType
-                {
-                    FirstName = "John",
-                    MI = "Q",
-                    LastName = "Developer"
-                },
-                Address = new Request_v1.AddressType
-                {
-                    AddressLine1 = "123 Address St",
-                    City = "Denver",
-                    State = "CO",
-                    ZipCode = "12345"
-                }
-            };
-
-            // Request_v1 is the root element for all SED requests.
-            Request_v1 SedRequest = new Request_v1();
-
-            // You can send multiple payment requests at once, but most situations only require one.
-            SedRequest.Payments = new Request_v1.PaymentType[1];
-            SedRequest.Payments[0] = PaymentRequest;
-
-            // Add some information about the application.
-            SedRequest.Application = new Request_v1.ApplicationType
-            {
-                ApplicationID = Config.applicationId, // You'll be assigned an ApplicationID before you go live.
-                LanguageID = Config.languageId // "EN" for English, etc.
-            };
+            // Setting the transaction type to "11" indicates that we want to run a Sale.
+            SedRequest.Payments[0].TransactionBase.TransactionType = "11";
 
             // Convert the request object to an XML string.
             string XmlRequest = SedRequest.ToXml();
 
-            // Note that many integrators prefer to construct the XML string directly,
-            // instead of building the request object first and serializing. For example,
-            // if all your requests are basic sales that only vary by dollar amount and 
-            // the order number, it may be simpler to use a string literal + String.Format().
-            
-            // See the "XML Messaging" document for more on SED requests.
+            /* 
+             * Note that, in many cases, it makes more sense to build the XML string directly.
+             * 
+             * For example, if you know your requests are all going to be simple sales,
+             * maybe just varying by amount and order number, you could manipulate an XML
+             * string literal with String.Format() -- this would probably be easier than
+             * piecing together a request object and calling its ToXml() method.
+             * 
+             * See the "XML Messaging" document for more on SED requests.
+             * 
+             */
 
-            // But anyway, however you decide to generate your XML, pass it into the client object.
+            // The SED API exposes a client object that manages messaging 
+            // between your application and Sage Exchange Desktop.
+            var ApiClient = new ModuleClient();
+
             // This is the point at which the UI pops up to collect the payment information.
-            ModuleResponse ApiResponse = (ModuleResponse)ApiClient.GetResponse(XmlRequest);
+            IModuleResponse ApiResponse = ApiClient.GetResponse(XmlRequest);
 
             // All requests through the SED API return a status code and description:
             int StatusCode = ApiResponse.GetStatusCode();
@@ -109,6 +71,8 @@ namespace SageExchangeDesktopSamples
                 // We'll save the transaction reference for later. It's used for voids, refunds, etc.
                 Config.vanReference = SedResponse.PaymentResponses[0].TransactionResponse.VANReference;
             }
+
+            Console.WriteLine();
         }
     }
 }
