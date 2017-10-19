@@ -21,25 +21,37 @@ Follow the steps below to download and verify the SED 2.0 installation tool:
 1. Go to https://www.sageexchange.com/install/sed2/ and download the SED 2.0 installer.
 1. Extract the zip file anywhere on your local machine.
 1. Verify the digital signature of the files you downloaded.
-  1. Right click **SageExchangeDesktopBootstrapper.exe** and select **Properties**. The SageExchangeDesktopBootstrapper.exe Properties window opens.
+    1. Right click **SageExchangeDesktopBootstrapper.exe** and select **Properties**. The SageExchangeDesktopBootstrapper.exe Properties window opens.
+
+      <div align="center">
 
       ![SED Installer Properties Window](./Images/SED_Installer_Properties_Window.png)
 
-   2. Click the **Digital Signatures** tab and verify that the package is signed by **Sage Payment Solutions, Inc.**
-   3. Click the line showing **Sage Payment Solutions, Inc.** in the Signature list area to select it.
-   4. Click **Details**. The **Digital Signature Details** window opens.
+      </div>
 
-      ![Digital Signature Details](/Images/DigitalSignatureDetails.jpg)
+    2. Click the **Digital Signatures** tab and verify that the package is signed by **Sage Payment Solutions, Inc.**
+    3. Click the line showing **Sage Payment Solutions, Inc.** in the Signature list area to select it.
+    4. Click **Details**. The **Digital Signature Details** window opens.
 
-   5. Under **Digital Signature Information** check that the message displays "This digital signature is OK."
-   6. Click **OK** to close the **Digital Signature Details** window.
-   7. Click **OK** to close the **SageExchangeDesktopBootstrapper.exe Properties** window.
+        <div align="center">
+
+        ![Digital Signature Details](./Images/DigitalSignatureDetails.jpg)
+
+        </div>
+
+    5. Under **Digital Signature Information** check that the message displays "This digital signature is OK."
+    6. Click **OK** to close the **Digital Signature Details** window.
+    7. Click **OK** to close the **SageExchangeDesktopBootstrapper.exe Properties** window.
 
 Follow the steps below to install SED 2.0 on your local machine:
 1. Right click **SageExchangeDesktopBootstrapper.exe** and select **Run as administrator**.
 1. Enter your administrator credentials and then click **OK** to continue. The **Sage Exchange Desktop Setup** window opens.
 
-   ![SED Setup](/Images/SED_Setup_Window.jpg)
+    <div align="center">
+
+    ![SED Setup](./Images/SED_Setup_Window.jpg)
+
+    </div>
 
 1. Review the Sage End User License Agreement (EULA) and then select **I agree to the license terms and conditions**.
 1. Click **Install** to start the installation.
@@ -52,7 +64,11 @@ After installing SED 2.0 and every time you start up Windows, the SED 2.0 applic
 
 Once SED is successfully running and ready for use, the SED taskbar icon will change to a green and white SE text box and a Sage Exchange dialog bubble will display for a few seconds as shown below:
 
-<p align = "center">![SED Tray Icon](./Images/SED_Tray_Icon.jpg)</p>
+<div align="center">
+
+![SED Tray Icon](./Images/SED_Tray_Icon.jpg)
+
+</div>
 
 #### Sage Exchange Desktop Menu
 Once startup is complete, access the SED 2.0 menu by right-clicking on the taskbar icon.
