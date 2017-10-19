@@ -23,7 +23,7 @@ Follow the steps below to download and verify the SED 2.0 installation tool:
 1. Verify the digital signature of the files you downloaded.
   1. Right click **SageExchangeDesktopBootstrapper.exe** and select **Properties**. The SageExchangeDesktopBootstrapper.exe Properties window opens.
 
-      ![SED Installer Properties Window](/Images/SED_Installer_Properties_Window.png)
+      ![SED Installer Properties Window](./Images/SED_Installer_Properties_Window.png)
 
    2. Click the **Digital Signatures** tab and verify that the package is signed by **Sage Payment Solutions, Inc.**
    3. Click the line showing **Sage Payment Solutions, Inc.** in the Signature list area to select it.
@@ -40,7 +40,7 @@ Follow the steps below to install SED 2.0 on your local machine:
 1. Enter your administrator credentials and then click **OK** to continue. The **Sage Exchange Desktop Setup** window opens.
 
    ![SED Setup](/Images/SED_Setup_Window.jpg)
-   
+
 1. Review the Sage End User License Agreement (EULA) and then select **I agree to the license terms and conditions**.
 1. Click **Install** to start the installation.
 1. Click **Yes** on the **User Account Control** window to allow the installer to make changes to the computer.
