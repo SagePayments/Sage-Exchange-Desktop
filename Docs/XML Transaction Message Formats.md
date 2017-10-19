@@ -2,7 +2,7 @@
 The following illustrations provide examples of how the request message components are structured. All requests are framed within a Request_v1 root and must include an Application element. Optional XML elements can be omitted from the request message when not used. Some elements are arrays. In cases where more than one element is present in the array, processing will occur in FIFO. XML reserved characters must be observed and encoded appropriately.
 
 This document provides sample XML messages for the following transaction types:
-1. [Sale](# Sale)
+1. [Sale](#Sale)
 1. [Authorization](#Authorization)
 1. [Capture](#Capture)
 1. [Force](#Force)

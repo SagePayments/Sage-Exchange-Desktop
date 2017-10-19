@@ -21,17 +21,15 @@ Follow the steps below to download and verify the SED 2.0 installation tool:
 1. Go to https://www.sageexchange.com/install/sed2/ and download the SED 2.0 installer.
 1. Extract the zip file anywhere on your local machine.
 1. Verify the digital signature of the files you downloaded.
-   1. Right click **SageExchangeDesktopBootstrapper.exe** and select **Properties**. The SageExchangeDesktopBootstrapper.exe Properties window opens.
+  1. Right click **SageExchangeDesktopBootstrapper.exe** and select **Properties**. The SageExchangeDesktopBootstrapper.exe Properties window opens.
 
-      <p align = "center">
       ![SED Installer Properties Window](/Images/SED_Installer_Properties_Window.png)
-      </p>
 
    2. Click the **Digital Signatures** tab and verify that the package is signed by **Sage Payment Solutions, Inc.**
    3. Click the line showing **Sage Payment Solutions, Inc.** in the Signature list area to select it.
    4. Click **Details**. The **Digital Signature Details** window opens.
 
-      <p align = "center">![Digital Signature Details](./Images/DigitalSignatureDetails.jpg)<p align = "center">
+      ![Digital Signature Details](/Images/DigitalSignatureDetails.jpg)
 
    5. Under **Digital Signature Information** check that the message displays "This digital signature is OK."
    6. Click **OK** to close the **Digital Signature Details** window.
@@ -41,7 +39,8 @@ Follow the steps below to install SED 2.0 on your local machine:
 1. Right click **SageExchangeDesktopBootstrapper.exe** and select **Run as administrator**.
 1. Enter your administrator credentials and then click **OK** to continue. The **Sage Exchange Desktop Setup** window opens.
 
-   <p align = "center">![SED Setup](./Images/SED_Setup_Window.jpg)</p>
+   ![SED Setup](/Images/SED_Setup_Window.jpg)
+   
 1. Review the Sage End User License Agreement (EULA) and then select **I agree to the license terms and conditions**.
 1. Click **Install** to start the installation.
 1. Click **Yes** on the **User Account Control** window to allow the installer to make changes to the computer.
@@ -233,7 +232,7 @@ You can customize Sage Exchange Desktop v2.x for your application by modifying t
 ### Modifying the User Interface
 You can modify elements such as text color, background color, group box color, and hide or show elements and fields on the Sage Exchange Desktop user interface by changing default values of tags in the &lt;UI\> (user interface) section of XML code for each user interface XML transaction.
 
-<p align = "center">![UI Tag](./Images/UITag.jpg)</p>
+<p align = "center">![UI Tag](https://raw.githubusercontent.com/SagePayments/Sage-Exchange-Desktop/Documentation-Test/Docs/Images/UITag.jpg)</p>
 
 #### Hiding or Showing fields
 The tags in the &lt;SinglePayment>&lt;/SinglePayment> section within the UI code allow you to show or hide fields on the Payment Information page of the SED user interface. For example, you can choose to hide fields such as Reference Number or Shipping in the Totals group box or extra address lines on the Billing Information page by setting the tag values to false.
