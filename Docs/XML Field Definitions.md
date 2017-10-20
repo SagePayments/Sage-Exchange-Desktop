@@ -7,7 +7,7 @@ Sage Exchange uses XML to send request and response messages. This document prov
 The sections below define the following elements used in XML request messages:
 
 1. [Request_V1](#Request_V1)
-1. [Application](#ApplicationType)
+1. [Application](#Application)
 1. [Payments](#Payments)
 1. [Batch](#Batch)
 1. [BatchType](#BatchType)
