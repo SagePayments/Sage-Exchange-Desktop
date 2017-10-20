@@ -73,17 +73,29 @@ Once SED is successfully running and ready for use, the SED taskbar icon will ch
 #### Sage Exchange Desktop Menu
 Once startup is complete, access the SED 2.0 menu by right-clicking on the taskbar icon.
 
-<p align = "center">![SED Menu](./Images/SED Menu.jpg)</p>
+<div align="center">
+
+![SED Menu](./Images/SED_Menu.jpg)
+
+</div>
 
 ##### About Sage Exchange Desktop
 To verify the version of SED that is currently installed and running, click **About Sage Exchange** on the menu. The version number displays just below the Sage Exchange title on the screen.  Other information on the screen includes the copyright details and the main Sage Payments support page URL and phone number.
 
-<p align = "center">![About SED](./Images/About SED.png)</p>
+<div align = "center">
+
+ ![About SED](./Images/About_SED.png)
+
+ </div>
 
 #### Start Menu
 As part of the installation process, the setup program installs a shortcut to launch SED 2.0 in the Windows start menu under the program group Sage Payment Solutions and on the desktop.
 
-<p align = "center">![Start Menu](./Images/Start Menu.jpg)</p>
+<div align = "center">
+
+ ![Start Menu](./Images/Start_Menu.jpg)
+
+ </div>
 
 ## <a name="Installation"></a>Installation
 The following sections provide details about installing SED 2.0 and distributing applications that use the SED 2.0 API:
@@ -166,7 +178,11 @@ If the dependencies are not already installed on your machine, the SED Bootstrap
 ### <a name="Distribution"></a> Distribution
 The Sage Exchange Desktop API (clSedApi.dll) may be bundled stand-alone with third party applications that have integrated with SED 2.0. The API will detect the need to install SED 2.0 at runtime and prompt the user for installation. The installation steps outlined above will start automatically.
 
-<p align="center">_**Note:** The installation requires elevation to local machine Administrator level._</p>
+<div align="center">
+
+_**Note:** The installation requires elevation to local machine Administrator level._
+
+</div>
 
 ### <a name="ExternalDevices"></a> External Device Components
 SED 2.0 supports additional peripheral hardware devices. Some of these devices require that additional components be installed in order to function properly. Since the hardware devices are optional these components are separate from the Sage Exchange Desktop installation. It is recommended you review your application requirements to determine which, if any, hardware devices you will be supporting in order to properly deploy the SED 2.0 to your end users.   
@@ -178,7 +194,11 @@ The programs installed as part of the SED installation will be displayed in the 
 
 Select each program from the list and click **Uninstall** on the following window.
 
-<p align = "center">![Uninstall SED](./Images/Uninstall SED.jpg)</p>
+<div align = "center">
+
+ ![Uninstall SED](./Images/Uninstall_SED.jpg)
+
+ </div>
 
 ### <a name="Updates"></a> Updates
 The SED 2.0 application automatically checks for application updates at launch and periodically while running. It is possible that upon first launch after initial install a new update will be available.
@@ -187,7 +207,11 @@ When an update is available, the update process will launch automatically. The u
 
 If a new release of SED is available, the update process will launch. The following window displays the new version and release notes:
 
-<p align = "center">![Software Update Available](./Images/SED Update Available.jpg)</p>
+<div align = "center">
+
+ ![Software Update Available](./Images/SED_Update_Available.jpg)
+
+ </div>
 
 The release notes are cumulative and can be reviewed by scrolling the window.
 
@@ -248,25 +272,41 @@ You can customize Sage Exchange Desktop v2.x for your application by modifying t
 ### Modifying the User Interface
 You can modify elements such as text color, background color, group box color, and hide or show elements and fields on the Sage Exchange Desktop user interface by changing default values of tags in the &lt;UI\> (user interface) section of XML code for each user interface XML transaction.
 
-<p align = "center">![UI Tag](https://raw.githubusercontent.com/SagePayments/Sage-Exchange-Desktop/Documentation-Test/Docs/Images/UITag.jpg)</p>
+<div align = "center">
+
+ ![UI Tag](./Images/UITag.jpg)
+
+ </div>
 
 #### Hiding or Showing fields
 The tags in the &lt;SinglePayment>&lt;/SinglePayment> section within the UI code allow you to show or hide fields on the Payment Information page of the SED user interface. For example, you can choose to hide fields such as Reference Number or Shipping in the Totals group box or extra address lines on the Billing Information page by setting the tag values to false.
 
 The image below shows the SinglePayment section of the SED 2.0 XML messaging specification. Change the value of the &lt;Visible> element from 'true' to 'false' to hide that field on the user interface:
 
-<p align = "center">![SinglePayment Tag](./Images/SinglePaymentTag.jpg)</p>
+<div align = "center">
+
+ ![SinglePayment Tag](./Images/SinglePaymentTag.jpg)
+
+ </div>
 
 #### Disabling Manual Card Number Entry
 You can also use the UI section of the XML message to prevent credit card numbers from being manually entered. Add the &lt;CanEnterAccount> tag (and value) to your code to disable manual entry in the Card Number field on the Sale window. This will require the user to swipe or dip the card, or to key the credit card number on the hardware terminal connected to Sage Exchange Desktop.
 
 The following image shows the &lt;CanEnterAccount> element:
 
-<p align = "center">![CanEnterAccount Tag](./Images/CanEnterAccount.jpg)</p>
+<div align = "center">
+
+ ![CanEnterAccount Tag](./Images/CanEnterAccount.jpg)
+
+ </div>
 
 The image below shows how the Card Number field is disabled for entry on the Sale window if you add the tag above to your code:
 
-<p align = "center">![Manual Entry Disabled Tag](./Images/ManualEntryDisabled.jpg)</p>
+<div align = "center">
+
+ ![Manual Entry Disabled Tag](./Images/ManualEntryDisabled.jpg)
+
+ </div>
 
 ## <a name="EMVSetup"></a> EuroPay, Master Card, and Visa (EMV) Device Setup
 The following sections describe how to set up a chip enabled terminal to process EMV transactions using SED 2.0.
@@ -283,12 +323,20 @@ You can download the recommended drivers for each device from the Sage Exchange 
 After you install the device drivers, follow the steps below to enable your device in Sage Exchange Desktop.
 
 1. Right-click the green **SE 2.0** icon in the Microsoft Window system tray and then click **Settings** from the submenu to open the Sage Exchange Desktop – Settings window.
-<p align = "center">![SED Settings](./Images/SEDSettings.jpg)</p>
+<div align = "center">
+
+ ![SED Settings](./Images/SEDSettings.jpg)
+
+ </div>
 
 1. Expand the **Hardware** node on the left-hand side and then click **EMV Devices**.
 
 1. On the right-hand side, click your installed device (or devices) from the list of **Available Devices**. Sage Exchange Desktop will restart, and you will be ready to accept payments.
-<p align = "center">![EMV Devices](./Images/EMVDevices.jpg)</p>
+<div align = "center">
+
+ ![EMV Devices](./Images/EMVDevices.jpg)
+
+ </div>
 
 ## <a name="Troubleshooting"></a>Troubleshooting
 The following sections describe where to locate log files and how to configure a Moneris QA server, if your SED 2.0 implementation is not functioning as expected.
