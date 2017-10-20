@@ -37,13 +37,12 @@ The sections below define the following elements used in XML request messages:
 
 The Request_V1 element is the root.  It contains the Application, Payments, HealthcareSignature, and IsSplitPayment elements.
 
-Element Name |	Data Type |	Required | Comments
----|---|---
-Application |	ApplicationType |	Yes |	Identifies the calling application, version, and its certification as a valid integrated solution.
-Payments |	Array of PaymementType | 	No |	An array of payments to be processed.
-HealthcareSignature |	HealthcareSignatureType | No |	Used for capturing a signature for healthcare transactions.  *Only supported on specific hardware terminals.*
-IsSplitPayment |	boolean |	No |	Indicates if the array of payments is to be treated as split payments or multi payments. If omitted the default is false.
-
+| Element Name | Data Type | Required | Comments |
+| ---- | ---- | ---- | ---- |
+| Application |	ApplicationType |	Yes |	Identifies the calling application, version, and its certification as a valid integrated solution. |
+| Payments |	Array of PaymementType | 	No |	An array of payments to be processed. |
+| HealthcareSignature |	HealthcareSignatureType | No |	Used for capturing a signature for healthcare transactions. *Only supported on specific hardware terminals.* |
+| IsSplitPayment |	boolean |	No |	Indicates if the array of payments is to be treated as split payments or multi payments. If omitted the default is false. |
 
 #### <a name="Application"></a> Application Element - required
 
@@ -58,10 +57,10 @@ IsSplitPayment |	boolean |	No |	Indicates if the array of payments is to be trea
 
 The Application element contains the ApplicationID, LanguageID, ClientID, and ClientKey elements.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **       | **Comments **                                                                                                                                                                                                                                                    |
-|-------------------|------------------|---------------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ApplicationID     | string           | 50            | Yes                 | Identifies the calling application, version, and its certification as a valid integrated solution. The value is obtained from Sage Payment Solutions through a registration/certification process.                                                               |
-| LanguageID        | string           | 10            | No                  | Specifies the language to be used when displaying the user interface. The default is “en-US” for English United States. The values are derived from the lower case 2 letter language code from ISO 699-1 and the two letter upper case from ISO 3166. For example,  “fr-CA” = French Canadian. |
+| Element Name | Data Type   | Length   | Required       | Comments |
+| ---- | ---- | ---- | ---- | ---- |
+| ApplicationID | string           | 50            | Yes                 | Identifies the calling application, version, and its certification as a valid integrated solution. The value is obtained from Sage Payment Solutions through a registration/certification process.                                                               |
+| LanguageID | string           | 10            | No                  | Specifies the language to be used when displaying the user interface. The default is “en-US” for English United States. The values are derived from the lower case 2 letter language code from ISO 699-1 and the two letter upper case from ISO 3166. For example,  “fr-CA” = French Canadian. |
 | ClientID          | string           | 1-50          | Required for EMV   | A Sage-provided value that identifies the calling application during EMV transactions. |
 | ClientKey         | string           | 1-50          | Required for EMV   | A Sage-provided value that identifies the calling application during EMV transactions. |
 
@@ -95,7 +94,7 @@ The Batch element can contain one BatchType element.
 ```
 The BatchType element refers to a single payment and must contain a Merchant and BatchPayment element and may contain the optional Net and Count elements.
 
-| **Element Name ** | **Data Type **     | **Required **   | **Comments **                                                           |
+| Element Name  | Data Type      | Required    | Comments                                                            |
 |-------------------|--------------------|-----------------|-------------------------------------------------------------------------|
 | Merchant          | MerchantType       | Yes             | Contains the merchant account elements related to processing a batch.   |
 | Net               | decimal            | No              | The transaction total net amount of the batch being settled.             |
@@ -116,7 +115,7 @@ The BatchType element refers to a single payment and must contain a Merchant and
 
 The HealthcareSignature element contains elements required for a hardware terminal to prompt, capture, and store a healthcare signature with a transaction.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                                                             |
+| Element Name  | Data Type    | Length    | Required    | Comments                                                              |
 |-------------------|------------------|---------------|-----------------|---------------------------------------------------------------------------|
 | Merchant          | MerchantType     |               | Yes             | Contains the merchant account elements related to processing a payment.   |
 | VANReference      | string           | 10            | Yes             | The reference of the transaction to store the image to.                                                                                  |
@@ -142,7 +141,7 @@ The HealthcareSignature element contains elements required for a hardware termin
 
 The PaymentType element refers to a single payment and must contain a Merchant and TransactionBase element and may contain the optional Customer, ShippingRecipient, Level2, Level3, VaultStorage, Recurring, and Healthcare elements.
 
-| **Element Name ** | **Data Type **        | **Required **   | **Comments **                                                                                      |
+| Element Name  | Data Type         | Required    | Comments                                                                                       |
 |-------------------|-----------------------|-----------------|----------------------------------------------------------------------------------------------------|
 | Merchant          | MerchantType          | Yes             | Contains the merchant account elements related to processing a payment.                            |
 | TransactionBase   | TransactionBaseType   | Yes             | Contains the transaction elements related to processing a payment.                                 |
@@ -166,7 +165,7 @@ The PaymentType element refers to a single payment and must contain a Merchant a
 ```
 The Merchant element contains the required MerchantID and MerchantKey elements.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                                |
+| Element Name  | Data Type    | Length    | Required    | Comments                                 |
 |-------------------|------------------|---------------|-----------------|----------------------------------------------|
 | MerchantID        | string           | 12            | Yes             | Identifies the merchant account on the VAN.   |
 | MerchantKey       | string           | 12            | Yes             | Identifies the merchant.    
@@ -185,7 +184,7 @@ The Merchant element contains the required MerchantID and MerchantKey elements.
 
 The TransactionBase element contains the TransactionID, TransactionType, Reference1, Amount, AuthCode, TenderType, CustomerType, and VANReference elements.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **|
+| Element Name  | Data Type    | Length    | Required    | Comments |
 |-------------------|------------------|---------------|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | TransactionID     | string           | 32            | Yes             | Identifies the payment for status inquires. In the event the communication is interrupted, a payment response can be queried later using this element.   |
 | TransactionType  | integer          | 2             | Yes             | No user interface: <ol><li> = Sale</li><li>= Authorization</li><li>= Capture</li><li>= Void</li><li>= Force</li><li>= Credit</li><li>= Credit without Reference</li></ol> User interface:<ol><li>= Sale</li><li>= Authorization</li><li>= Capture</li><li>= Force</li><li>= Credit</li><li>Credit without Reference</li></ol> |
@@ -210,7 +209,7 @@ The TransactionBase element contains the TransactionID, TransactionType, Referen
 ```
 The Customer element contains the Name, Address, and Company elements for the person making the payment.
 
-| **Element Name ** | **Data Type **   | **Required **   | **Comments **                                       |
+| Element Name  | Data Type    | Required   | Comments                                        |
 |-------------------|------------------|-----------------|-----------------------------------------------------|
 | Name              | NameType         | No              | Contains elements related to the customer’s name.   |
 | Address           | AddressType      | No\*            | Contains elements related to the billing address. Used during address verification service for manually keyed transactions.   |
@@ -227,7 +226,7 @@ The Customer element contains the Name, Address, and Company elements for the pe
 ```
 The ShippingRecipient element contains the Name, Address, and Company elements for the person receiving the goods/service.
 
-| **Element Name ** | **Data Type **   | **Required **   | **Comments **                                           |
+| Element Name  | Data Type    | Required    | Comments                                            |
 |-------------------|------------------|-----------------|---------------------------------------------------------|
 | Name              | NameType         | No              | Contains elements related to the recipient’s name.      |
 | Address           | AddressType      | No\*            | Contains elements related to the shipping address.      |
@@ -244,7 +243,7 @@ The ShippingRecipient element contains the Name, Address, and Company elements f
 ```
 The Level2 element contains the CustomerNumber and TaxAmount elements used to qualify a purchase card payment for Level II.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                  |
+| Element Name  | Data Type    | Length    | Required    | Comments                   |
 |-------------------|------------------|---------------|-----------------|--------------------------------|
 | CustomerNumber    | string           | 17            | Yes             | User defined customer number.  |
 | TaxAmount         | decimal          |               | Yes             | The tax amount being charged.  |
@@ -268,7 +267,7 @@ The Level2 element contains the CustomerNumber and TaxAmount elements used to qu
 ```
 The Level3 element contains the optional CustomerNumber, TaxAmount, DestinationZipCode, NationalTax, VATNumber, DiscountAmount, DutyAmount, VATInvoiceNumber, VATTaxAmount, VATTaxRate, DestinationCountryCode, and LineItems elements used to qualify a purchase card payment for Level III.
 
-| **Element Name **  | **Data Type **   | **Length **   | **Required **   | **Comments **                                               |
+| Element Name   | Data Type    | Length    | Required    | Comments                                                |
 |--------------------|------------------|---------------|-----------------|-------------------------------------------------------------|
 | Level2             | string           | 17            | Yes             | Contains the Level2 elements CustomerNumber and TaxAmount.   |
 | ShippingAmount     | decimal          |               | Yes             | Shipping amount charged to the transaction. |
@@ -305,7 +304,7 @@ The Level3 element contains the optional CustomerNumber, TaxAmount, DestinationZ
 ```
 The Level3LineItemType element contains the CommodityCode, Description, ProductCode, Quantity, UnitOfMeasure, UnitCost, TaxAmount, TaxRate, DiscountAmount, AlternateTaxIndentifier, TaxTypeApplied, DiscountIndicator, NetGrossIndicator, ExtendedItemAmount, DebitCreditIndicator, and TotalAmount elements.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                     |
+| Element Name  | Data Type    | Length    | Required    | Comments                      |
 |-------------------|------------------|---------------|-----------------|-----------------------------------|
 | CommodityCode     | string           | 12            | Yes             | Commodity code that applies to the item.         |
 | Description       | string           | 35            | Yes             | A brief description of the item.   |
@@ -332,7 +331,7 @@ The Level3LineItemType element contains the CommodityCode, Description, ProductC
 ```
 The VaultStorage element contains the Service, and GUID elements.
 
-| **Element Name ** | **Data Type **     | **Length **   | **Required **   | **Comments ** |
+| Element Name  | Data Type      | Length    | Required    | Comments  |
 |-------------------|--------------------|---------------|-----------------|---------------|
 | Service           | VaultServiceType   |               | Yes             | Used to indicate the vault operation:<ul><li>RETRIEVE = Pull data from the vault for processing</li><li> UPDATE = Update data in the vault with new data captured</li><li>CREATE = Insert data in the vault with data captured</li></ul>|
 | GUID              | string           | 36            | No\*            | The vault GUID referencing a previous payment account captured in the vault. Payment information will not need to be captured and instead it is retrieved from the vault.   |
@@ -353,7 +352,7 @@ The VaultStorage element contains the Service, and GUID elements.
 ```
 The Recurring element contains the ScheduleType, ScheduleInterval, DayOfMonth, StartDate, Amount, TimesToProcess, and NonBusinessDay elements.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                                 |
+| Element Name  | Data Type    | Length    | Required    | Comments                                  |
 |-------------------|------------------|---------------|-----------------|-----------------------------------------------|
 | Schedule          | ScheduleType     |               | Yes             | The schedule type for the recurring payment:<ul><li>DAILY = Schedule will be based on day</li><li>MONTHLY = Schedule will be based on month</li></ul>              |
 | Interval          | integer          |               | No              | The interval between processing. For example, every other month:<ul><li> Schedule = MONTHLY </li><li> Interval = 2</li></ul> |
@@ -371,7 +370,7 @@ The Recurring element contains the ScheduleType, ScheduleInterval, DayOfMonth, S
 ```
 The Postback element refers to a URL in which transaction response data should be sent after processing and must contain an HttpsUrl element.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                                                                                                                                                                           |
+| Element Name  | Data Type    | Length    | Required    | Comments                                                                                                                                                                            |
 |-------------------|------------------|---------------|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | HttpsUrl          | string           | 1024          | Yes             | The absolute URL to POST transaction response data back to. The communication requires SSL. This is to be used in integrations in which response handling is disconnected or in which response data should be delivered to a remote server.   |
 
@@ -406,7 +405,7 @@ The following sections define the XML fields used by SED in the response message
 ```
 The PaymentResponseType element contains the response elements related to a payment.
 
-| **Element Name **   | **Data Type **            | **Required **   | **Comments **                                                          |
+| Element Name    | Data Type             | Required    | Comments                                                           |
 |---------------------|---------------------------|-----------------|------------------------------------------------------------------------|
 | Response            | ResponseType              | Yes             | Contains the response elements related to the gateway request.          |
 | VaultResponse       | VaultResponseType         | No              | Contains the response elements related to the vault operation.          |
@@ -426,7 +425,7 @@ The PaymentResponseType element contains the response elements related to a paym
 
 The ResponseType element contains the gateway response elements related to a gateway request.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                                                                                                  |
+| Element Name  | Data Type    | Length    | Required    | Comments                                                                                                   |
 |-------------------|------------------|---------------|-----------------|----------------------------------------------------------------------------------------------------------------|
 | ResponseIndicator                | string           | 1             | Yes             | The gateway/vault response indicator:<ul><li> A=Approved</li><li> E=Declined</li><li> X=Error</li><li>I = Batch Inquiry (only returned on batch inquiry requests)</li></ul></br>When returned during a Payment request, this field is used to determine the status of a Payment (Approved/Declined/Error). |
 | ResponseCode      | string           | 6             | Yes             | The gateway/vault response code. When the indicator is a E or X, this code and be used to determine the cause.   |
@@ -445,11 +444,11 @@ The ResponseType element contains the gateway response elements related to a gat
 ```
 The VaultResponseType element contains the the response elements related to a vault operation.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments ** |
+| Element Name  | Data Type    | Length    | Required    | Comments  |
 |-------------------|------------------|---------------|-----------------|---------------------------------------------------------------|
-| Response          | ResponseT ype    |               | Yes             | Contains the response elements related to the vault request.   |
+| Response          | ResponseType    |               | Yes             | Contains the response elements related to the vault request.   |
 | GUID              | string           | 36            | Yes             | The vault GUID used to reference the card data captured. |
-| ExpirationDate    | string           | 4             | Yes             | The date the account data will expire in  MMYY format. <br/> * This field is only applicable to responses with PaymentTypeID (3,4,5,6,7,D,O).* |
+| ExpirationDate    | string           | 4             | Yes             | The date the account data will expire in  MMYY format. <br/> *This field is only applicable to responses with PaymentTypeID (3,4,5,6,7,D,O).* |
 | Last4             | string           |               | Yes             | A masked representation of the account data showing only the last four digits. |
 | PaymentDescription              | string           |               | Yes             | The description of the account data. Credit card payments will be the first 6 digits + masked digits + last 4 digits. ACH payments will be the routing number + space + masked account digits + last 4 account digits.  |
 | PaymentTypeID     | string           | 1             | Yes             | The payment type identifier: <ul><li>3=American Express</li><li> 4=Visa</li><li>5=MasterCard</li><li>6=Discover</li><li>7=JCB</li><li>D=Debit Card</li><li>O=Other</li><li>C=ACH</li></ul> |
@@ -462,7 +461,7 @@ The VaultResponseType element contains the the response elements related to a va
 ```
 The RecurringResponseType element contains the recurring identifier element to reference the recurring transaction.
 
-| **Element Name ** | **Data Type **   | **Required **   | **Comments **                             |
+| Element Name  | Data Type    | Required    | Comments                              |
 |-------------------|------------------|-----------------|-------------------------------------------|
 | RecurringID       | string           | Yes             | The recurring record identifier for the recurring transaction listed in the recurring system.   |
 
@@ -487,11 +486,11 @@ The RecurringResponseType element contains the recurring identifier element to r
 ```
 The TransactionResponseType element contains the response elements related to processing a transaction.
 
-| **Element Name ** | **Data Type **   | **Required **   | **Comments **                                                                                        |
+| Element Name  | Data Type    | Required    | Comments                                                                                         |
 |-------------------|------------------|-----------------|------------------------------------------------------------------------------------------------------|
 | AuthCode          | string           | 6               | The authorization code for the approved payment. |
-| AVSResult         | string           | 1               | The AVS result for manually keyed transactions. This field is for information purposes and is not to be used to determine the status of a payment.</br> * This field is only applicable to responses with PaymentTypeID (3,4,5,6,7,D,O).* |
-| CVVResult         | string           | 1               | The CVV result for matching the verification value. This field is for information purposes and is not to be used to determine the status of a payment.</br> * This field is only applicable to responses with PaymentTypeID (3,4,5,6,7,D,O).* |
+| AVSResult         | string           | 1               | The AVS result for manually keyed transactions. This field is for information purposes and is not to be used to determine the status of a payment.</br> *This field is only applicable to responses with PaymentTypeID (3,4,5,6,7,D,O).* |
+| CVVResult         | string           | 1               | The CVV result for matching the verification value. This field is for information purposes and is not to be used to determine the status of a payment.</br> *This field is only applicable to responses with PaymentTypeID (3,4,5,6,7,D,O).* |
 | VANReference        | string           | 10              | The gateway transaction reference to be used later in captures, voids, and credits. |
 | TransactionID       | string           | |The unique transaction identifier. |
 | Last4               | string           |                 | The last four digits of the card number. |
@@ -503,7 +502,7 @@ The TransactionResponseType element contains the response elements related to pr
 | CardExpirationDate | string           | 4               | The date the account data will expire in MMYY format. |
 | CurrencyCode        | string           | 3               | Represents the transaction currency. USD = 840.                                               |
 | SignatureImageData | string           |                 | Base-64 encoded image data representing the transaction signature.                           |
-| SignatureFormat                    | string           |                 | The signature image format; eg, “PNG” |  
+| SignatureFormat                    | string           |                 | The signature image format; eg, “PNG”. |  
 
 #### <a name="EmvResponseType"></a> EmvResponseType Element
 ```xml
@@ -513,7 +512,7 @@ The TransactionResponseType element contains the response elements related to pr
 ```
 The EmvResponseType element contains the response elements related to an EMV transaction.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                                                                                                         |
+| Element Name  | Data Type    | Length    | Required    | Comments                                                                                                          |
 |-------------------|------------------|---------------|-----------------|-----------------------------------------------------------------------------------------------------------------------|
 | EmvTags           | EmvTagType              | Array         | Yes             | Contains an array of key/value EmvTagType elements. Please see the EMV-specific documentation for more information.   |
 
@@ -530,14 +529,14 @@ The EmvResponseType element contains the response elements related to an EMV tra
 ```
 The BatchResponseType element contains the response elements related to processing a batch.
 
-| **Element Name ** | **Data Type **      | **Length **   | **Required **   | **Comments **                                                                                            |
+| Element Name  | Data Type       | Length    | Required    | Comments                                                                                             |
 |-------------------|---------------------|---------------|-----------------|----------------------------------------------------------------------------------------------------------|
 | Response          | Response Type       |               | Yes             | Contains the response elements related to the gateway request. |
 | BatchNumber       | string              | 6             | Yes             | The batch sequence number. |
 | BatchReference   | string              | 10            | Yes             | The unique gateway batch identifier. |
 | Net               | decimal             |               | Yes             | The net transaction amount of the batch. A negative amount is possible when processing credits/refunds.   |
 | Count             | integer             |               | Yes             | The total transaction count of the batch. |
-| BatchPayment      | BatchPaymentType   |               | Yes             | CREDITCARD</br>PURCHASECARD |
+| BatchPayment      | BatchPaymentType   |               | Yes             | CREDITCARD <br/> PURCHASECARD |
 
 #### <a name="TransactionSettlementStatusType"></a> TransactionSettlementStatusType Element
 ```xml
@@ -550,7 +549,7 @@ The BatchResponseType element contains the response elements related to processi
 ```
 The TransactionSettlementStatusType element contains the settlement status elements related to a transaction.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                                                     |
+| Element Name  | Data Type    | Length    | Required    | Comments                                                      |
 |-------------------|------------------|---------------|-----------------|-------------------------------------------------------------------|
 | TransactionType  | integer          |               | Yes             | The transaction type of the transaction processed. |
 | SettlementType   | integer          |               | Yes             | The settlement type of the transaction processed:<ul><li>0 = Error / Declined</li><li>1= Batch</li><li>2  = Settled</li><li>3  = Expired</li></ul> |
@@ -570,7 +569,7 @@ The TransactionSettlementStatusType element contains the settlement status eleme
 ```
 The TransactionStatusQueryResponseType element contains the response elements related to processing a transaction.
 
-| **Element Name **            | **Data Type **             | **Required **   | **Comments **                                                                                    |
+| Element Name             | Data Type              | Required    | Comments                                                                                     |
 |------------------------------|----------------------------|-----------------|--------------------------------------------------------------------------------------------------|
 | Response                     | ResponseType              | Yes             | Contains the response elements related to the gateway request. |
 | VaultResponse                | VaultResponseType        | No              | Contains the response elements related to the vault operation. |
@@ -591,7 +590,7 @@ The TransactionStatusQueryResponseType element contains the response elements re
 ```
 The RecurringStatusQueryResponseType element contains the response elements related to a recurring transaction processed by the Sage system.
 
-| **Element Name **               | **Data Type **                | **Length **   | **Required **   | **Comments **                                                                                    |
+| Element Name                | Data Type                 | Length    | Required    | Comments                                                                                     |
 |---------------------------------|-------------------------------|---------------|-----------------|--------------------------------------------------------------------------------------------------|
 | Responses                       | Response Type                 | Array         | Yes             | Contains the response elements related to the gateway request. |
 | TransactonResponses            | TransactionResponseType     | Array         | Yes             | Contains the response elements related to the vault operation.                                    |
@@ -608,7 +607,7 @@ The RecurringStatusQueryResponseType element contains the response elements rela
 ```
 The RecurringStatusQueryResponseType element contains the response elements related to a recurring transaction processed by the Sage system.
 
-| **Element Name ** | **Data Type **                | **Length **   | **Required **   | **Comments **                                                            |
+| Element Name  | Data Type                 | Length    | Required    | Comments                                                             |
 |-------------------|-------------------------------|---------------|-----------------|--------------------------------------------------------------------------|
 | Response          | Response Type                 |               | Yes             | Contains the response elements related to the account creation request.   |
 | VaultAccount      | VaultAccountType             |               | Yes             | Contains the account elements provided in the request.                    |
@@ -625,7 +624,7 @@ The RecurringStatusQueryResponseType element contains the response elements rela
 ```
 The AccountQueryResponseType element contains the response elements related to a merchant account status and service list inquiry.
 
-| **Element Name ** | **Data Type **   | **Length **   | **Required **   | **Comments **                                                                    |
+| Element Name  | Data Type    | Length    | Required    | Comments                                                                     |
 |-------------------|------------------|---------------|-----------------|----------------------------------------------------------------------------------|
 | Response          | Response Type    |               | Yes             | Contains the response elements related to the account inquiry request.                                                                         |
 | Merchant          | MerchantType    |               | Yes             | Contains the account elements provided in the request.                            |
@@ -657,7 +656,7 @@ The following is a list of accepted characters for numeric fields:
 ## Gateway error codes
 The following table defines the error codes that may be returned by SED:
 
-| **Code ** | **Message **                 | **Description **                                            |
+| Code  | Message                  | Description                                             |
 |-----------|------------------------------|-------------------------------------------------------------|
 | 000000    | INTERNAL SERVER ERROR        | Server Error.                                                |
 | 900000    | INVALID T\_ORDERNUM          | Order number value is in an invalid format.                  |
