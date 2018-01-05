@@ -3,22 +3,47 @@ Sage Exchange Desktop (SED 2.0) is an installed .Net application which is fully 
 
 This document includes details about installing and setting up SED 2.0 on your system so that you can quickly get started developing applications:
 
-1. [QuickStart](#QuickStart)
-1. [Installation](#Installation)
+1. [QuickStart and Installation](#QuickStart)
+1. [Installation Details](#Installation)
 1. [Customizing SED 2.0](#Customizing)
+1. [Supported Hardware](#Hardware)
 1. [EMV Device Setup](#EMVSetup)
 1. [Troubleshooting](#Troubleshooting)
 
-## <a name="QuickStart"></a> QuickStart
-The following sections cover installing and using SED 2.0 on your system.
+## <a name="QuickStart"></a> QuickStart and Installation
+The following sections cover installing and using SED 2.0 on your system:
+* [Installation](#QSInstall)
+  * [Manual Install (default)](#Manual)
+  * [Silent Install (enterprise)](#Silent)
+* [Updating SED 2.0](#Update)
+* [Using SED 2.0](#Using)
 
-### Installation
-To install SED 2.0, first download and verify the installation file; then, run the installer. The following sections provide step-by-step instructions for performing these actions.
+### <a name="QSInstall"></a> Installation
+The following sections define the installation process for the two versions of SED 2.0 offered by Sage Payment Systems:
+* [Manual Install](#Manual) (default) - The manual installation process installs SED 2.0 on a single, user controlled machine.
+* [Silent Install](#Silent) (enterprise) - The Silent Install version of SED 2.0 is recommended for larger organizations who have admin restrictions at the user/workstation level. It makes it possible to push installation and updates to multiple workstations across an organization.
+
+#### <a name="Manual"></a> Manual Install
+The steps below refer to the Manual Install version of SED 2.0. These steps cover most installations of SED 2.0. The Manual Install version updates automatically when Sage Payments issues a new update to the product.
+
+To manually install SED 2.0 on your system, first download and verify the installation file; then, run the installer. The following sections provide step-by-step instructions for performing these actions.
 
 _Remove any previously installed versions of SED before installing the most recent version. See the section **[Uninstalling SED](#Uninstalling)** if needed._
 
+##### Verify the installation files
+
 Follow the steps below to download and verify the SED 2.0 installation tool:
-1. Go to https://www.sageexchange.com/install/sed2/ and download the SED 2.0 installer.
+1. Go to https://www.sageexchange.com/install/ and download the SED 2.0 installer.
+    1. Select **Sage Exchange Desktop v2.x** from the **Downloads** menu at the top of the page, as shown below:
+
+        <div align="center">
+
+        ![Downloads Menu](./Images/Downloads_Menu.jpg)
+
+        </div>
+
+    1. Scroll down to the **Manual Installation** section and click **Download Installer** in the **Sage Exchange Desktop 2.0** row.
+
 1. Extract the zip file anywhere on your local machine.
 1. Verify the digital signature of the files you downloaded.
     1. Right click **SageExchangeDesktopBootstrapper.exe** and select **Properties**. The SageExchangeDesktopBootstrapper.exe Properties window opens.
@@ -43,23 +68,130 @@ Follow the steps below to download and verify the SED 2.0 installation tool:
     6. Click **OK** to close the **Digital Signature Details** window.
     7. Click **OK** to close the **SageExchangeDesktopBootstrapper.exe Properties** window.
 
+##### Install SED 2.0
 Follow the steps below to install SED 2.0 on your local machine:
 1. Right click **SageExchangeDesktopBootstrapper.exe** and select **Run as administrator**.
 1. Enter your administrator credentials and then click **OK** to continue. The **Sage Exchange Desktop Setup** window opens.
 
     <div align="center">
 
-    ![SED Setup](./Images/SED_Setup_Window.jpg)
+    ![SED Setup](./Images/SED_TOC.jpg)
 
     </div>
 
 1. Review the Sage End User License Agreement (EULA) and then select **I agree to the license terms and conditions**.
 1. Click **Install** to start the installation.
-1. Click **Yes** on the **User Account Control** window to allow the installer to make changes to the computer.
-1. Click **Close** to close the **Sage Exchange Desktop Setup** window, indicating successful installation.
+1. Click **Yes** on the **User Account Control** window to allow the installer to make changes to the computer. A progress bar displays, indicating the status of the installation.
 
+    <div align="center">
 
-### Using SED 2.0
+    ![SED Setup](./Images/SED_Installer_Progress.jpg)
+
+    </div>
+
+1. A status message displays when the installation is complete. Click **Close** to close the **Sage Exchange Desktop Setup** window.
+
+    <div align="center">
+
+    ![SED Setup](./Images/SED_Installer_Complete.jpg)
+
+    </div>
+
+#### <a name="Silent"></a> Silent Install
+The Silent Install version of SED 2.0 is recommended for larger organizations who have admin restrictions at the user/workstation level. It is also useful for enterprise organizations who have the ability to push network installation (group policy). The Silent Install version does not update automatically.
+
+SED 2.0 Silent Installation is a Windows Installer file (a file with MSI extension) that internally uses existing standard SED 2.0 installation process but does not require any user input.
+
+The following sections describe how to use the SED 2.0 Silent Installation:
+* Requirements
+* Installation
+* Distribution
+
+##### Requirements
+SED 2.0 Silent Installation requires the following items:
+* Internet access to download the latest SED 2.0 Bootstrapper
+* AppDeploy version 1.0.5 or higher (delivered inside the Bootstrapper package)
+
+##### Installation
+Follow the steps below to download and install the SED 2.0 Silent Installation:
+1. Download the SED 2.0 Silent Installation file from https://www.sageexchange.com/install.
+    1. Select **Sage Exchange Desktop v2.x** from the **Downloads** menu at the top of the page, as shown below:
+        <div align="center">
+
+        ![Downloads Menu](./Images/Downloads_Menu.jpg)
+
+        </div>
+
+    1. Scroll down to the **Silent Installation** section and click **Download Installer** in the **Sage Exchange Desktop Distributor** row.
+
+        <div align="center">
+
+        ![Download Silent](./Images/Download_Silent.jpg)
+
+        </div>
+1. Run the file when it has finished downloading. The file installs the latest version of SED 2.0 without displaying any user interface. No additional user actions are required during the installation.
+
+When the installation is completed, a **Sage Exchange Desktop** shortcut will be available in the Start Menu under the **Sage Payment Solutions** folder, as shown below:
+
+  <div align="center">
+
+  ![Silent Install Shortcut](./Images/Silent_Shortcut.jpg)
+  _Note: The image above is from Windows 7.
+  The menu may look different on your system._
+  </div>
+
+##### Distribution
+The SED 2.0 Silent Install installs the **Sage Exchange Desktop Distributer** application.
+
+The SED Distributer application includes the following features:
+* Install SED 2.0 in attended and unattended/silent modes.
+* Check whether a user skipped the last SED 2.0 update.
+* Enable and disable the SED 2.0 update check that is usually performed when the application launches.
+
+The SED Distributer application is installed in one of the following locations depending on your system architecture:
+* Program Files\Sage Payment Solutions\Application Distributer
+* Program Files (x86)\Sage Payment Solutions\Application Distributer
+
+The following user interface displays when you execute the Application Distributer program without any command line arguments:
+  <div align="center">
+
+  ![Silent Install ui](./Images/Silent_UI.jpg)
+
+  </div>
+
+Select the appropriate options for your system and click **Save & Close**.
+
+The SED Distributer application supports the following command line arguments:
+* /Quiet – Hides the UI and installs the latest available SED 2.0 without any user interaction.
+* /EnableSEDUpdate - Enables SED 2.0 check for updates every time SED 2.0 starts.
+* /DisableSEDUpdate - Disables SED 2.0 check for updates every time SED 2.0 starts.
+* /? or /ShowEvents - Shows help information in the event viewer window and waits for SED installation events as shown in the image below.
+
+  <div align="center">
+
+  ![Silent Install Event Viewer](./Images/Silent_Event_Viewer.jpg)
+
+  </div>
+
+### <a name="Update"></a> Update SED 2.0
+Follow the steps below to update SED 2.0 immediately following installation or any time you launch the program.
+1. Whenever updates are available, SED 2.0 will prompt you to install them.
+
+    <div align="center">
+
+    ![SED Setup](./Images/SED_Update_Available.jpg)
+
+    </div>
+
+1. Click **Download and Install** to begin the update. A progress bar displays to show the status of the installation.
+
+    <div align="center">
+
+    ![SED Setup](./Images/SED_Update_Progress.jpg)
+
+    </div>
+
+### <a name="Using"></a> Using SED 2.0
 After installing SED 2.0 and every time you start up Windows, the SED 2.0 application will automatically launch. During startup the animated taskbar icon displays a rotating double-arrow icon as it loads and checks various startup parameters.
 
 Once SED is successfully running and ready for use, the SED taskbar icon will change to a green and white SE text box and a Sage Exchange dialog bubble will display for a few seconds as shown below:
@@ -80,16 +212,16 @@ Once startup is complete, access the SED 2.0 menu by right-clicking on the taskb
 </div>
 
 ##### About Sage Exchange Desktop
-To verify the version of SED that is currently installed and running, click **About Sage Exchange** on the menu. The version number displays just below the Sage Exchange title on the screen.  Other information on the screen includes the copyright details and the main Sage Payments support page URL and phone number.
+To verify the version of SED that is currently installed and running, click **About Sage Exchange Desktop** on the menu. The version number displays in the lower portion of the window.  Other information on the screen includes the copyright details and the main Sage Payments support page URL and phone number.
 
 <div align = "center">
 
- ![About SED](./Images/About_SED.png)
+ ![About SED](./Images/About_SED.jpg)
 
  </div>
 
 #### Start Menu
-As part of the installation process, the setup program installs a shortcut to launch SED 2.0 in the Windows start menu under the program group Sage Payment Solutions and on the desktop.
+As part of the installation process, the setup program installs a shortcut to launch SED 2.0 in the Windows start menu.
 
 <div align = "center">
 
@@ -97,8 +229,10 @@ As part of the installation process, the setup program installs a shortcut to la
 
  </div>
 
-## <a name="Installation"></a>Installation
-The following sections provide details about installing SED 2.0 and distributing applications that use the SED 2.0 API:
+ Click the shortcut to launch SED 2.0.
+
+## <a name="Installation"></a>Installation Details
+The following sections provide information about installing, updating, and uninstalling SED 2.0, and provide details needed for distributing applications that use the SED 2.0 API:
 
 1. [Components](#Components)
 1. [Dependencies](#Dependencies)
@@ -153,13 +287,13 @@ The following registry entries are related to the COM classes/interfaces support
 If SED 2.0 is not already installed, the API will prompt the user to install it at runtime.  If the user clicks yes, the Bootstrapper will automatically download and install.
 ###### Installation Path
 SED 2.0 is installed at the following location on your machine:
-* [PROGRAM FILES]\Sage Payment Solutions\Sage Exchange Desktop
+* C:\Program Files (x86)\Sage Payment Solutions
 
 The installation folder contains only the deployment reference file. The actual Sage Exchange Desktop application files are managed by the SPS Application Deployment and can be found under its installation path.
 
 ###### Start Menu Shortcut
 The SED Bootstrapper application adds a shortcut to SED 2.0 to the Start Menu, which is stored at the following location:
-* [PROGRAM DATA]\Microsoft\Windows\Start Menu\Programs\Sage Payment Solutions\Sage Exchange Desktop
+* C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Sage Payment Solutions
 
 ###### Registry Entries
 The following registry entry is related the Sage Exchange Desktop application and can be used to detect a valid installation from external software. If this keys is not present in the registry then it is an indication that the installation of this component failed:
@@ -267,10 +401,10 @@ The table below defines the new identifiers and key values that you will need to
 | SED Not Detected    | API Initiates SED 2.0 Install         | SDK Initiates SED 1.0 Install         |
 
 ## <a name="Customizing"></a> Customizing SED 2.0
-You can customize Sage Exchange Desktop v2.x for your application by modifying the default colors on the user interface and choosing to hide or show fields.
+You can customize Sage Exchange Desktop v2.x for your application by modifying the default colors of the user interface and choosing to hide or show fields.
 
 ### Modifying the User Interface
-You can modify elements such as text color, background color, group box color, and hide or show elements and fields on the Sage Exchange Desktop user interface by changing default values of tags in the &lt;UI\> (user interface) section of XML code for each user interface XML transaction.
+You can modify elements such as text color, background color, and group box color, and hide or show elements and fields on the Sage Exchange Desktop user interface by changing default values of tags in the &lt;UI\> (user interface) section of XML code for each user interface XML transaction.
 
 <div align = "center">
 
@@ -308,6 +442,28 @@ The image below shows how the Card Number field is disabled for entry on the Sal
 
  </div>
 
+## <a name="Hardware"></a> Supported Hardware
+The Sage Exchange Desktop is compatible with a wide variety of EMV and non-EMV compatible card readers.
+
+Different fees may apply, depending on the device you organization uses.
+
+### EMV Devices
+SED 2.0 supports the following EMV enabled devices:
+* [PAX S300](http://www.pax.us/portfolio_page/s300-integrated-retail-pinpad/)
+* [Equinox L5300](https://www.equinoxpayments.com/products/l5000/)
+* [IDTech Augusta](https://www.idtechproducts.com/products/swipe-reader-writers/the-augusta-an-emv-l1-l2-chip-and-magstripe-reader)
+* Ingenico IPP320 - SED supports four versions of the IPP320 for different security needs and service providers:
+  * [IPP320 Standard](https://ingenico.us/smart-terminals/telium2/payment-terminals/ipp-series/ipp-320.html) - The _Standard_ version of the IPP320 leverages the Sage Exchange Desktop software-based encryption.
+  * [IPP320 Advanced Security](https://ingenico.us/smart-terminals/telium2/payment-terminals/ipp-series/ipp-320.html) - The _Advanced Security_ version of the IPP320 leverages terminal-based encryption (P2PE) provided by Sage Payment Solutions.
+  * [IPP320 PCI Listed P2PE](https://ingenico.us/smart-terminals/telium2/payment-terminals/ipp-series/ipp-320.html) - The _PCI Listed P2PE_ version of the IPP320 leverages terminal-based encryption provided by [BlueFin](https://www.bluefin.com/products/p2pe-point-to-point-encryption/decryptx/) which is fully PCI/P2PC validated.
+  * [IPP320 Moneris](https://ingenico.us/smart-terminals/telium2/payment-terminals/ipp-series/ipp-320.html) - SED 2.0 supports the IPP320 provided by Moneris. This version uses Moneris security and processes payments on Moneris systems.
+
+### Non-EMV Devices
+SED 2.0 supports the following Non-EMV devices:
+* [ID Tech SecureMag](https://www.idtechproducts.com/products/swipe-reader-writers/securemag-encrypted-intelligent-magstripe-reader)
+* [Ingenico IPP320 provided by Chase Paymentech](https://en.chasepaymentech.ca/pin_pads.html)
+* Magtek [DynaMag](https://www.magtek.com/product/dynamag) and [DynaPad](https://www.magtek.com/product/dynapad)
+
 ## <a name="EMVSetup"></a> EuroPay, Master Card, and Visa (EMV) Device Setup
 The following sections describe how to set up a chip enabled terminal to process EMV transactions using SED 2.0.
 
@@ -342,7 +498,19 @@ After you install the device drivers, follow the steps below to enable your devi
 The following sections describe where to locate log files and how to configure a Moneris QA server, if your SED 2.0 implementation is not functioning as expected.
 
 ### Log Files
-In the event a Sage Exchange Desktop installation fails, please check that the user installing the application has the proper permissions. These paths may vary slightly between different computers. Some folders (e.g., AppData) may be hidden by default.
+In the event a Sage Exchange Desktop installation fails, please check that the user installing the application has the proper permissions.
+
+Log file paths may vary slightly between different computers. Some folders (e.g., AppData) may be hidden by default.
+
+To view the log files, right-click the green **SE 2.0** icon in the Microsoft Window system tray.
+
+Click **Tracing**, and select **View Log** from the menu.
+
+  <div align = "center">
+
+ ![View Log](./Images/SED_View_Log.jpg)
+
+ </div>
 
 #### Installation Logs
 Installation logging is automatically enabled. The logs can be found in in the following directory:
