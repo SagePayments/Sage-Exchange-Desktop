@@ -445,7 +445,7 @@ The image below shows how the Card Number field is disabled for entry on the Sal
 ## <a name="Hardware"></a> Supported Hardware
 The Sage Exchange Desktop is compatible with a wide variety of EMV and non-EMV compatible card readers.
 
-Different fees may apply, depending on the device you organization uses.
+Different fees may apply, depending on the device your organization uses.
 
 ### EMV Devices
 SED 2.0 supports the following EMV enabled devices:
