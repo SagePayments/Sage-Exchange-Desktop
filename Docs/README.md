@@ -3,6 +3,7 @@
 ![SED Logo](/Docs/Images/AA_SED_Logo.png)
 
 </div>
+
 # Documentation
 The following documentation is available on this site:
 * [Implementation Guide](Implementation_Guide.md)
