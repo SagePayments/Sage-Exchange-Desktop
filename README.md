@@ -2,11 +2,11 @@
 Sage Exchange Desktop (SED 2.0) is an installed .Net application which is fully PCI-DSS compliant. SED 2.0 allows an ISV to completely remove all sensitive payment data from their application workflow by leveraging the Sage Exchange Desktop UI interface. Features like tokenization, Level III processing, and EMV are baked directly into the same API.
 
 # Sample Code
-This repository contains sample code for processing Auth and Capture, Refund, Sale, Vault, and Void transactions. The required library and configuration files are included in the [Samples](/Samples) directory. 
+This repository contains sample code for processing Auth and Capture, Refund, Sale, Vault, and Void transactions. The required library and configuration files are included in the [Samples](/Samples) directory.
 
 # Documentation
 The following documentation is available on this site:
-* [Implementation Guide](Implementation_Guide.md)
+* [Implementation Guide](/Docs/Implementation_Guide.md)
   * Installation
     * Manual Installation
     * Enterprise Installation
