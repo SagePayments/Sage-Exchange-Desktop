@@ -5,7 +5,7 @@
 </div>
 
 # Update!
-Sage Exchange Desktop (SED 2.0) is now Paya Connect Desktop (PCD 2.0). Updated documentation and integration details can be found [here](https://github.com/PayaDev/Legacy/tree/master/PayaGateway/Paya-Connect-Desktop).
+Sage Exchange Desktop (SED 2.0) is now Paya Connect Desktop (PCD 2.0). Updated documentation and integration details can be found [here](https://github.com/PayaDev/Legacy/tree/master/PayaGateway/Paya-Connect-Desktop). If you have any questions please reach out to our API/Integration Support Team at sdksupport@paya.com.
 
 # Overview
 Sage Exchange Desktop (SED 2.0) is an installed .Net application which is fully PCI-DSS compliant. SED 2.0 allows an ISV to completely remove all sensitive payment data from their application workflow by leveraging the Sage Exchange Desktop UI interface. Features like tokenization, Level III processing, and EMV are baked directly into the same API.
